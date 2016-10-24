@@ -5,6 +5,10 @@ syntax on "コードの色分け
 set tabstop=2 "インデントをスペース4つ分に設定
 set shiftwidth=2 "自動インデントでずれる幅
 set smartindent "オートインデント
+set clipboard=unnamedplus,autoselect
+
+noremap <S-h> ^
+noremap <S-l> $
 
 "#####検索設定#####
 set ignorecase "大文字/小文字の区別なく検索する
@@ -33,6 +37,7 @@ if has('vim_starting')
 	NeoBundle 'Townk/vim-autoclose'
 	NeoBundle 'derekwyatt/vim-scala'
 	NeoBundle 'kana/vim-filetype-haskell'
+	
 	NeoBundle 'thinca/vim-quickrun' "その場所で実行可能
 	NeoBundle 'derekwyatt/vim-scala' "scalaのプラグイン
 	" https://github.com/Shougo/neocomplete.vim
@@ -54,8 +59,15 @@ if has('vim_starting')
 	NeoBundle 'Shougo/vimproc'
 	NeoBundle 'vim-latex/vim-latex'
 	NeoBundle 'sophacles/vim-processing'
+	NeoBundle 'kchmck/vim-coffee-script'	
+	NeoBundle 'claco/jasmine.vim' "js BDDツール
+	NeoBundle 'nathanaelkane/vim-indent-guides' "indentの深さに色をつける
 
-	 " Use neocomplete.
+	au BufRead,BufNewFile,BufReadPre *.coffee set filetype=coffee
+	autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et
+ 
+ 
+ 	" Use neocomplete.
 		let g:neocomplete#enable_at_startup = 1
 	 " Use smartcase.
 	 let g:neocomplete#enable_smart_case = 1
